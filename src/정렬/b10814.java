@@ -23,6 +23,7 @@ public class b10814 {
 
         for(int i = 0; i < N; i++) {
             System.out.println(array[i][0] + " " + array[i][1]);
+
         }
     }
 }
