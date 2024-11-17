@@ -13,6 +13,14 @@ public class b9655 {
         dp[2] = false;   // false = 찬영
         dp[3] = true;
 
+        if(N < 4){
+            if (dp[N]) {
+                System.out.println("SK");
+            }else{
+                System.out.println("CY");
+            }
+        }
+
         for(int i=4;i<=N;i++){
             dp[i] = !dp[i-1];
         }
