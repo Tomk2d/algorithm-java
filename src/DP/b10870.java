@@ -8,10 +8,10 @@ public class b10870 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[] dp = new int[N+1];
+        long[] dp = new long[N+1];
 
 
-        for(int i=0; i < dp.length; i++){
+        for(int i=0; i <= N; i++){
             if(i == 0) dp[i] = 0;
             else if(i == 1) dp[i] = 1;
             else dp[i] = dp[i-2] + dp[i-1];
