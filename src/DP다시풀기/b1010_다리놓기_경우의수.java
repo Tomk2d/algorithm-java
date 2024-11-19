@@ -18,6 +18,13 @@ public class b1010_다리놓기_경우의수 {
             }
         }
 
+        for(int i =0; i<=n; i++){
+            for(int j=0; j<=m; j++){
+                System.out.print(dp[i][j]+" ");
+            }
+            System.out.println();
+        }
+
         return dp[n][m];
     }
 
