@@ -3,7 +3,7 @@ package DP다시풀기;
 import java.io.*;
 import java.util.*;
 
-public class b11722 {
+public class b11722_감소하는부분수열 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
