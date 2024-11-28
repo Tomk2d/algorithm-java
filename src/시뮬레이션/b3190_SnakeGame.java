@@ -1,4 +1,4 @@
-package DP다시풀기;
+package 시뮬레이션;
 
 import java.io.*;
 import java.util.*;
