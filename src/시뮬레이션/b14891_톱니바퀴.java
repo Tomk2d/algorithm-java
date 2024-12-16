@@ -32,11 +32,15 @@ class b14891_톱니바퀴 {
     public static int[] turn_simulation(int[] wheel, int direction) {
         int[] newWheel = new int[8];
         if (direction == 1) { // 시계 방향
+            for (int i = 0; i < 7; i++) {
+                newWheel[i+1] = wheel[i];
+            }
             newWheel[0] = wheel[7];
-            System.arraycopy(wheel, 0, newWheel, 1, 7);
         } else { // 반시계 방향
+            for(int i =7; i > 0; i--) {
+                newWheel[i-1] = wheel[i];
+            }
             newWheel[7] = wheel[0];
-            System.arraycopy(wheel, 1, newWheel, 0, 7);
         }
         return newWheel;
     }
