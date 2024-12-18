@@ -80,7 +80,7 @@ public class b14503_bfs_로봇청소기 {
 
             // 3. 네 방향 모두 청소가 되어 있거나 벽인 경우
             if (!cleaned) {
-                int back_direction = (now_direction + 2) % 4; // 후진 방향
+                int back_direction = (now_direction + 2) % 4; // 후진 하기
                 int bx = x + directions[back_direction][0];
                 int by = y + directions[back_direction][1];
 
