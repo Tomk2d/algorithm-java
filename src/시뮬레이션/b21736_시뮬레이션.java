@@ -33,6 +33,7 @@ public class b21736_시뮬레이션 {
         Deque<Point> queue = new ArrayDeque<>();
         queue.add(new Point(start_x, start_y));
 
+        // bfs
         while(!queue.isEmpty()){
             Point point = queue.pollFirst();
             int x = point.x;
