@@ -55,7 +55,7 @@ public class b21736_시뮬레이션 {
                 }
             }
         }
-
+        // 예외 처리
         if(max_peole == 0) System.out.println("TT");
         else System.out.println(max_peole);
     }
