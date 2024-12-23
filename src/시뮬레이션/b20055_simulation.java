@@ -42,7 +42,7 @@ public class b20055_simulation {
             int last_hp = belt_hp[N * 2 - 1];
             boolean last_robot = belt_robot[N * 2 - 1];
 
-            // 1. 벨트를 시계방향으로 회전
+            // 1. 벨트를 시계방향으로 회전.
             for (int i = N * 2 - 1; i > 0; i--) {
                 belt_hp[i] = belt_hp[i - 1];
                 belt_robot[i] = belt_robot[i - 1];
