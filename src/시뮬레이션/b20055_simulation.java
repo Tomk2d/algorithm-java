@@ -50,7 +50,7 @@ public class b20055_simulation {
             belt_hp[0] = last_hp;
             belt_robot[0] = last_robot;
 
-            // 즉시 내리기
+            // 즉시 내리기.
             belt_robot[N - 1] = false;
 
             // 2. 로봇 이동
