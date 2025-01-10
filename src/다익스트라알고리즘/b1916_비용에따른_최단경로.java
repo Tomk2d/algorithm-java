@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 public class b1916_비용에따른_최단경로{
+    // 다시 풀어보자
     public static int minTime = Integer.MAX_VALUE;
     public static List<List<Integer>> graph = new ArrayList<>();
     public static int[][] busArray;
