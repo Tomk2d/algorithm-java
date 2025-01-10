@@ -3,59 +3,71 @@ package 다익스트라알고리즘;
 import java.util.*;
 import java.io.*;
 
-public class b1916_비용에따른_최단경로{
-    // 다시 풀어보자
-    public static int minTime = Integer.MAX_VALUE;
-    public static List<List<Integer>> graph = new ArrayList<>();
-    public static int[][] busArray;
-
+public class b1916_비용에따른_최단경로 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine()); // 도시수
-        int M = Integer.parseInt(br.readLine()); // 버스수
+        StringTokenizer st;
+
+        // 입력: 도시 수와 버스 수
+        int N = Integer.parseInt(br.readLine());
+        int M = Integer.parseInt(br.readLine());
 
         // 그래프 초기화
-        for (int i = 0; i <= N; i++) { // 0부터 n 까지
+        List<List<int[]>> graph = new ArrayList<>();
+        for (int i = 0; i <= N; i++) {
             graph.add(new ArrayList<>());
         }
 
-        busArray = new int[M][3]; // 클래스 멤버 변수로 사용
-
+        // 간선 정보 입력
         for (int i = 0; i < M; i++) {
-            String[] input = br.readLine().split(" ");
-            int[] value = Arrays.stream(input).mapToInt(Integer::parseInt).toArray();
-            busArray[i] = value;
+            st = new StringTokenizer(br.readLine());
+            int start = Integer.parseInt(st.nextToken());
+            int end = Integer.parseInt(st.nextToken());
+            int cost = Integer.parseInt(st.nextToken());
 
-            // 출발지에 버스 번호 추가
-            graph.get(value[0]).add(i);
+            graph.get(start).add(new int[] { end, cost });
         }
 
-        String[] input2 = br.readLine().split(" ");
+        // 출발점과 도착점 입력
+        st = new StringTokenizer(br.readLine());
+        int start = Integer.parseInt(st.nextToken());
+        int end = Integer.parseInt(st.nextToken());
 
-        int start = Integer.parseInt(input2[0]);
-        int end = Integer.parseInt(input2[1]);
-        boolean[] visited = new boolean[M]; // 버스 방문
-        dfs(start, end, 0, visited);
-
-        System.out.println(minTime);
+        // 최소 비용 출력
+        System.out.println(dijkstra(N, graph, start, end));
     }
 
-    public static void dfs(int now, int end, int cost, boolean[] visited) {
-        if (cost >= minTime) { // 현재 비용이 이미 최소 시간보다 크다면 중단
-            return;
-        }
-        if (now == end) {
-            minTime = Math.min(cost, minTime);
-            return;
-        }
-        for (int bus : graph.get(now)) {
-            if (!visited[bus]) {
-                visited[bus] = true;
-                dfs(busArray[bus][1], end, cost + busArray[bus][2], visited);
-                visited[bus] = false;
+    public static int dijkstra(int N, List<List<int[]>> graph, int start, int end) {
+        // 거리 배열 초기화
+        int[] dist = new int[N + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
+
+        // 우선순위 큐 (비용 기준 오름차순 정렬)
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
+        pq.add(new int[] { start, 0 });
+
+        while (!pq.isEmpty()) {
+            int[] current = pq.poll();
+            int now = current[0];
+            int cost = current[1];
+
+            // 현재 비용이 이미 최단 거리보다 크면 스킵
+            if (cost > dist[now]) continue;
+
+            // 인접 노드 탐색
+            for (int[] next : graph.get(now)) {
+                int nextCity = next[0];
+                int nextCost = cost + next[1];
+
+                // 더 짧은 경로 발견 시 갱신
+                if (nextCost < dist[nextCity]) {
+                    dist[nextCity] = nextCost;
+                    pq.add(new int[] { nextCity, nextCost });
+                }
             }
         }
+
+        return dist[end]; // 도착점까지의 최단 거리 반환
     }
-
 }
-
