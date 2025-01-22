@@ -10,36 +10,28 @@ public class b12847_슬라이딩윈도우기본 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
+        int P = Integer.parseInt(st.nextToken());
 
-        int windowSize = K*2 + 1;
-        int maxIceLocation = 0;
-
-
-        int[] board = new int[1000001];
+        st = new StringTokenizer(br.readLine());
+        int[] days = new int[N];
         for(int i=0; i<N; i++){
-            st = new StringTokenizer(br.readLine());
-            int kg = Integer.parseInt(st.nextToken());
-            int idx = Integer.parseInt(st.nextToken());
-
-            board[idx] = kg;
-            maxIceLocation = Math.max(maxIceLocation, idx);
+            days[i] = Integer.parseInt(st.nextToken());
         }
 
-        int maxSum =0;
-        int currentSum =0;
-        for(int i=0; i< Math.min(windowSize, maxIceLocation+1); i++){
-            currentSum += board[i];
-        }
-        maxSum = currentSum;
+        long maxPay = 0, currentPay =0;
 
-        for(int i=windowSize; i<=maxIceLocation; i++){
-            currentSum += board[i];
-            currentSum -= board[i-windowSize];
-            maxSum = Math.max(currentSum, maxSum);
+        for(int i=0; i<P; i++){
+            currentPay+= days[i];
+        }
+        maxPay = currentPay;
+
+        for(int i=P; i<N; i++){
+            currentPay += days[i];
+            currentPay -= days[i-P];
+            maxPay = Math.max(currentPay, maxPay);
         }
 
-        System.out.println(maxSum);
+        System.out.println(maxPay);
     }
 }
 
