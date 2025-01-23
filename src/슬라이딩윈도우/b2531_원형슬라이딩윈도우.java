@@ -3,7 +3,7 @@ package 슬라이딩윈도우;
 import java.util.*;
 import java.io.*;
 
-public class b1531_원형슬라이딩윈도우 {
+public class b2531_원형슬라이딩윈도우 {
     static int maxSize =0;
     static int coupon =0;
 
