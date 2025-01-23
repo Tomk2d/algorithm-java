@@ -20,6 +20,7 @@ public class b15565_최소길이_부분배열_찾기 {
 
         int start=0, end=0, count=0;
         int minLength = Integer.MAX_VALUE;
+
         while(end < N){
             // 끝자리 1이면 카운트
             if(array[end] == 1){
