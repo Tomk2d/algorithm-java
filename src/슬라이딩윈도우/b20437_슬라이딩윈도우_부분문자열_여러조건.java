@@ -10,7 +10,7 @@ public class b20437_슬라이딩윈도우_부분문자열_여러조건 {
 
         int T = Integer.parseInt(br.readLine()); // 테스트 케이스 개수
 
-        while (T-- > 0) {
+        for(int i=0; i<T; i++) {
             String W = br.readLine(); // 문자열 입력
             int K = Integer.parseInt(br.readLine()); // K 값 입력
 
@@ -21,38 +21,38 @@ public class b20437_슬라이딩윈도우_부분문자열_여러조건 {
     }
 
     public static String solution(String W, int K) {
-        Map<Character, List<Integer>> charIndices = new HashMap<>();
 
-        // 1. 각 문자의 등장 인덱스를 저장
-        for (int i = 0; i < W.length(); i++) {
-            char c = W.charAt(i);
-            charIndices.computeIfAbsent(c, k -> new ArrayList<>()).add(i);
-        }
+        // ex) a : [1, 4, 7, 11]
+        Map <Character, List<Integer>> charList = new HashMap<>();
 
-        int shortestLen = Integer.MAX_VALUE;
-        int longestLen = -1;
-
-        // 2. 각 문자별로 K개의 연속된 부분 문자열을 찾음
-        for (List<Integer> indices : charIndices.values()) {
-            if (indices.size() < K) continue; // K개 미만이면 건너뜀
-
-            // 3. K개의 연속된 부분을 슬라이딩 윈도우 방식으로 탐색
-            for (int i = 0; i <= indices.size() - K; i++) {
-                int start = indices.get(i);
-                int end = indices.get(i + K - 1);
-                int length = end - start + 1;
-
-                // 3번 조건 (K개 포함된 가장 짧은 문자열)
-                shortestLen = Math.min(shortestLen, length);
-
-                // 4번 조건 (K개 포함되면서, 첫 문자와 마지막 문자가 같은 가장 긴 문자열)
-                if (W.charAt(start) == W.charAt(end)) {
-                    longestLen = Math.max(longestLen, length);
-                }
+        // 1. 문자열의 인덱스를 미리 저장.
+        for(int i=0; i < W.length(); i++){
+            char a = W.charAt(i);
+            if(charList.containsKey(a)){
+                charList.get(a).add(i);
+            }else{
+                charList.put(a, new ArrayList<>(List.of(i)));
             }
         }
 
-        return (shortestLen == Integer.MAX_VALUE) ? "-1" : (shortestLen + " " + longestLen);
+        int minLen = Integer.MAX_VALUE;
+        int maxLen = -1;
+
+        // 2. 요구 개수(K) 만족시키는 최소 크기와 최대크기
+        for(List<Integer> list : charList.values()){
+            if(list.size() < K) continue;   //  만족 못하는 알파벳 건너뛰기
+
+            for(int i=0; i <= list.size()-K; i++){
+                int start = list.get(i);
+                int end = list.get(i + K - 1);
+                int length = end - start + 1;
+
+                minLen = Math.min(minLen, length);
+                // for 문 안에는 어차피 같은 애들끼리만 검사함.
+                maxLen = Math.max(maxLen, length);
+            }
+        }
+
+        return (minLen == Integer.MAX_VALUE) ? "-1" : (minLen + " " + maxLen);
     }
 }
-
