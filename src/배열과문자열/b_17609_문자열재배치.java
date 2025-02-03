@@ -47,7 +47,6 @@ public class b_17609_문자열재배치 {
         return 100001;
     }
     public static String[] makeCopy(String[] str, int resultIdx){
-        String a = str[resultIdx];
         List<String> copyStr = new ArrayList<>();
 
         for(int i=0; i<str.length; i++){
