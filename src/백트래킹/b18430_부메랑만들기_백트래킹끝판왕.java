@@ -37,7 +37,7 @@ public class b18430_부메랑만들기_백트래킹끝판왕 {
         System.out.println(maxScore);
     }
 
-    // 백트래킹으로 모든 블럭 들어가서, 부메랑 배치 가능한것만 계산
+    // 중앙칸 방문하지 않은지 확인
     public static void backtrack(int x, int y, int nowScore, boolean[][] visited) {
         if (x == N) { // 끝까지 탐색했을 경우
             maxScore = Math.max(maxScore, nowScore);
@@ -47,7 +47,7 @@ public class b18430_부메랑만들기_백트래킹끝판왕 {
         int nx = (y == M-1) ? x+1 : x;  //  가로로 끝까지 가면 아래로 한칸
         int ny = (y == M-1) ? 0 : y+1;  //  가로로 끝까지 가면 가로 첫번째 칸으로 이동.
 
-        // 부메랑 배치 가능한 경우 찾기
+        // 부메랑 날개들 가능한지와 방문하지 않았는지
         if (!visited[x][y]) {
             for (int i = 0; i < 4; i++) {
                 int bx = x + direction[i][0][0];
