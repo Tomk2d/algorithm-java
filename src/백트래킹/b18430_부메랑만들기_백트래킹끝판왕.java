@@ -59,7 +59,7 @@ public class b18430_부메랑만들기_백트래킹끝판왕 {
                     // 방문 처리
                     visited[x][y] = visited[bx][by] = visited[cx][cy] = true;
                     int score = board[x][y] * 2 + board[bx][by] + board[cx][cy];
-                    // 탐색
+                    // 탐색. 현재 가능한 부메랑을 하나 놓고, 다음꺼 찾기
                     backtrack(nx, ny, nowScore + score, visited);
 
                     visited[x][y] = visited[bx][by] = visited[cx][cy] = false;
@@ -67,7 +67,7 @@ public class b18430_부메랑만들기_백트래킹끝판왕 {
             }
         }
 
-        // 부메랑을 놓지 않고 다음 위치 탐색
+        // visited 초기화 되었기 때문에, 현재랑 상관없이 부메랑 놓을 수 있음.
         backtrack(nx, ny, nowScore, visited);
     }
 
