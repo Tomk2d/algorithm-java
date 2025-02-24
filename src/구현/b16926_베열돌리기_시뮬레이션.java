@@ -3,6 +3,9 @@ package 구현;
 import java.io.*;
 import java.util.*;
 
+// 배열을 돌리는 문제인데,
+// 그냥 나가는 열 하나를 덜 입력하고, 다음턴에 돌리면 됐다..ㅎ
+
 public class b16926_베열돌리기_시뮬레이션 {
     private static int[][] board;
     private static int[][] changeBoard;
