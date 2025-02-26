@@ -2,7 +2,7 @@ package 백트래킹;
 
 import java.io.*;
 
-public class b_dfs_조합짜기
+public class b3980_dfs_조합짜기
 {
     private static int[][] board = new int[11][11];
     private static int maxPoint = 0;
