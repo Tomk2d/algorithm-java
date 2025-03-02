@@ -1,4 +1,4 @@
-package 슬라이딩윈도우;
+package 슬라이딩윈도우_투포인터;
 
 import java.util.*;
 import java.io.*;
