@@ -49,32 +49,28 @@ public class b11657_음수가중치 {
     }
 
     private static boolean bellmanFort(){
-        boolean hasCycle = false;
+        //boolean hasCycle = false;
 
         // 나머지 도시로 가는 최소비용 구하기
-        for(int i=1; i<N; i++){
+        for(int i=1; i<=N; i++){
             for(Node node : graph){
                 long nextCost = (long) minArray[node.depart] + node.cost;
 
                 if(minArray[node.depart] != Integer.MAX_VALUE
                     && minArray[node.arrive] > nextCost){
                     minArray[node.arrive] = nextCost;
+
+                    // 원래는 N-1 만큼 돌면서 그래프를 완성한다.
+                    // 하지만 N번째 턴을 추가하여, 그래프가 완성된 후에도 갱신되는지 검사한다.
+                    // 이때도 갱신 된다면, 음의 싸이클이 존재하는 것 이다.(돌릴때마다 - 로 향하는)
+                    if(i == N){
+                        return true;
+
+                    }
                 }
             }
         }
-
-        // 구한 최소 비용 검사. 음수 사이클 있는지 확인
-        for(Node node : graph){
-            long nextCost = (long) minArray[node.depart] + node.cost;
-
-            if(minArray[node.depart] != Integer.MAX_VALUE
-                && minArray[node.arrive] > nextCost){
-                hasCycle = true;
-                break;
-            }
-        }
-
-        return hasCycle;
+        return false;
     }
 
     private static class Node{
