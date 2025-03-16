@@ -3,6 +3,13 @@ package 구현;
 import java.util.*;
 import java.io.*;
 
+// 해당 문제는 크게 1개의 싸이클이 돌때마다 visited 를 업데이트 해주고,
+// 묶음별 갱신은 바로바로 해줬다.
+// 헷갈렸던 부분은 마지막 day 업데이트와
+// 어떤 조건으로 1개의 싸이클을 측정할지.
+// visited 의 처리과정에서 살짝 실수를 했다.
+// visited 업데이트는 재귀 호출전이나, 메서드 안에서 시작하자마자 해주자. 안그러면 무한 루프다
+
 public class b16234_2차원배열묶음과_개별업데이트
 {
     private static int N;
