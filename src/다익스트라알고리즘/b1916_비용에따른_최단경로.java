@@ -71,3 +71,6 @@ public class b1916_비용에따른_최단경로 {
         return dist[end]; // 도착점까지의 최단 거리 반환
     }
 }
+
+
+
