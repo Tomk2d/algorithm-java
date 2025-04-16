@@ -1,4 +1,4 @@
-package 이분탐색;
+package 이분탐색과_누적합;
 
 import java.io.*;
 import java.util.*;
