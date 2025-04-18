@@ -10,32 +10,29 @@ public class b2230_슬라이딩윈도우_기본 {
 
         int N = Integer.parseInt(st.nextToken());
         int target = Integer.parseInt(st.nextToken());
+
         int[] array = new int[N];
-
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            array[i] = Integer.parseInt(st.nextToken());
+        for(int i=0; i<N; i++){
+            array[i] = Integer.parseInt(br.readLine());
         }
-
         Arrays.sort(array);
-
-        if (target == 0) {
-            System.out.println(0);
-            return;
-        }
 
         int start = 0;
         int end = 0;
         int answer = Integer.MAX_VALUE;
 
-        while (end < N) {
-            int gap = array[end] - array[start];
+        while(end < N){
+            int diff = array[end] - array[start];
 
-            if (gap >= target) {
-                answer = Math.min(answer, gap);
-                start++;  // start를 증가시켜 더 작은 차이를 찾음
-            } else {
-                end++;  // gap이 target보다 작으면 end를 증가
+            if(diff >= target){
+                answer = Math.min(answer, diff);
+                if(start+1 <= end){
+                    start ++;
+                }else{
+                    end++;
+                }
+            }else{
+                end++;
             }
         }
 
