@@ -139,9 +139,7 @@ public class samsung_2024_1_1 {
 
         // 2. 초기 3x3 블록 추출 (회전 시작 상태)
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                copyBlock[i][j] = copyBoard[startX + i][startY + j];
-            }
+            System.arraycopy(copyBoard[startX + i], startY + 0, copyBlock[i], 0, 3);
         }
 
         int maxSize = 0;

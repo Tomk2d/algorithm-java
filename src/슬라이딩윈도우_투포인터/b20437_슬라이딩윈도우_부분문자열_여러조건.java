@@ -3,6 +3,10 @@ package 슬라이딩윈도우_투포인터;
 import java.io.*;
 import java.util.*;
 
+/*
+*   이 문제의 핵심은 일반적인 슬라이딩 윈도우 풀이가 아니란는 것과
+*   결국 max 와 min 둘 다 시작과 끝이 같아야 한다는거,,,
+* */
 public class b20437_슬라이딩윈도우_부분문자열_여러조건 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
