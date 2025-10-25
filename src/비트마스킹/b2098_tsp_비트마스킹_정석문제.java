@@ -15,7 +15,7 @@ public class b2098_tsp_비트마스킹_정석문제
         if(mask == FULL){
             // 도착지에서(now 가 도착지임. mask full 이니까) 출발지 못가면 안됨.
             if(pay[now][0] == 0) return INF;
-                // now 에서 출발지로 가는 비용 return 해서 더 해줌
+            // now 에서 출발지로 가는 비용 return 해서 더 해줌
             else return pay[now][0];
         }
 
@@ -59,7 +59,7 @@ public class b2098_tsp_비트마스킹_정석문제
             }
         }
 
-        // 0001 을 N칸 만큼 왼쪽으로 밈. 3이면 1000
+        // 00001 을 N칸 만큼 왼쪽으로 밈. 4면 10000
         // 이후 -1 해서 모든칸을 방문으로 만듬. 1111 (자신 포함 모든 방문. 애초에 2^0 이 0001 이니까.)
         FULL = (1<<N) - 1;
         dp = new int[1<<N][N];
