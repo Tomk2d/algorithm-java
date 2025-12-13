@@ -39,10 +39,12 @@ public class b7579_냅색DP_제한조건을넘으면서_최소비용
         for(int i=0; i<N; i++){
             int selectedCost = costs[i];
             int selectedMemory = memories[i];
+
             for(int cost=maxCost; cost>=selectedCost; cost--){
                 dp[cost] = Math.max(dp[cost], dp[cost - selectedCost] + selectedMemory);
             }
         }
+
         for(int cost=0; cost<=maxCost; cost++){
             int nowMemory = dp[cost];
             if(nowMemory >= limit){
